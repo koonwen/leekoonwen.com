@@ -1,0 +1,26 @@
+open Opium
+open Lwt.Syntax
+
+let get_static_page path =
+  Opium.Handler.serve (fun () ->
+      let* page = Opium.Body.of_file path in
+      match page with Some p -> Lwt.return_ok p | None -> failwith "")
+
+let static = Middleware.static_unix ~local_path:"./static" ~uri_prefix:"/" ()
+
+(* let index_handler _req = Response.of_html index |> Lwt.return *)
+
+let about_handler = get_static_page "./static/about.html"
+let project_handler = get_static_page "./static/projects.html"
+let cv_handler = get_static_page "./static/cv.html"
+
+let route_collection =
+  [
+    (* App.get "/" index_handler; *)
+    App.get "/about" about_handler;
+    App.get "/" about_handler;
+    App.get "/projects" project_handler;
+    App.get "/cv" cv_handler;
+  ]
+
+let add_routes app = Core.List.fold ~init:app ~f:( |> ) route_collection
