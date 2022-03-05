@@ -156,3 +156,13 @@ table {
   text-align: start;
   font-weight: inherit;
 }
+
+/* ProjectsPage */
+.proj-box {
+  padding: 20px;
+}
+
+.proj-header {
+  font-size: 30px;
+  font-weight: bold;
+}
