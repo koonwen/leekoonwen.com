@@ -4,7 +4,7 @@ project_name = website
 run :
 	dune exec $(project_name) --profile release -- --port=8000
 
-run-debug :
+debug :
 	dune exec $(project_name) -- --debug --verbose --port=8000
 
 build :

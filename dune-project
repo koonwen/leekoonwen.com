@@ -18,6 +18,6 @@
  (synopsis "My personal website/blog unneccesarilly written in pure OCaml")
  (depends
   (ocaml
-   (>= 5.0.0))
+   (>= 4.13.0))
   core
   opium))
