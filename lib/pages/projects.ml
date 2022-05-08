@@ -40,7 +40,7 @@ let bash_sym =
 let ocaml_sym =
   img
     ~a:[ a_style "height: 48px" ]
-    ~src:"http://ocaml.org/logo/Colour/SVG/colour-logo.svg" ~alt:"OCaml" ()
+    ~src:"symbols/OCaml_Logo.png" ~alt:"OCaml" ()
 
 let html_sym =
   img ~src:"https://img.icons8.com/color/48/000000/html-5--v1.png" ~alt:"HTML"
@@ -73,7 +73,7 @@ module ProjectsPage : PageSig = struct
   (*TODO Add blog post page and github links *)
   let content =
     [
-      proj_template ~image:"/projects/leekoonwen.com.png" ~name:"leekoonwen.com"
+      proj_template ~image:"/projects/leekoonwen.com.png" ~name:"leekoonwen.me"
         ~features:[ ocaml_sym; html_sym; css_sym ]
         ~description:
           "This website! I wrote and am currently developing it in pure OCaml \
