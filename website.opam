@@ -11,6 +11,10 @@ depends: [
   "ocaml" {>= "4.13.0"}
   "core"
   "opium"
+  "utop" {dev}
+  "merlin" {dev}
+  "ocamlformat" {dev}
+  "ocp-indent" {dev}
   "odoc" {with-doc}
 ]
 build: [

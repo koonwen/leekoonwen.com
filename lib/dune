@@ -1,6 +1,6 @@
 (library
  (name lib)
- (libraries opium core)
+ (libraries opium core letters)
  (wrapped false))
 
 (include_subdirs unqualified)

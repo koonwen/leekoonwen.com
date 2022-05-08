@@ -20,4 +20,8 @@
   (ocaml
    (>= 4.13.0))
   core
-  opium))
+  opium
+  (utop :dev)
+  (merlin :dev)
+  (ocamlformat :dev)
+  (ocp-indent :dev)))
