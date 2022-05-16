@@ -1,0 +1,4 @@
+(library
+ (name shared)
+ (public_name website.shared)
+ (libraries opium))

@@ -1,0 +1,4 @@
+(library
+ (name projects)
+ (public_name website.pages.projects)
+ (libraries shared))
