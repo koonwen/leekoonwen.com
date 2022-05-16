@@ -1,9 +1,19 @@
 (library
  (name lib)
- (libraries opium core letters)
- (wrapped false))
+ (public_name website.lib)
+ (libraries
+  opium
+  core
+  letters
+  website.pages.about
+  website.pages.contact
+  website.pages.cv
+  website.pages.projects
+  website.shared))
 
-(include_subdirs unqualified)
+; (wrapped false))
+
+; (include_subdirs unqualified)
 
 ; (env
 ;  (dev
