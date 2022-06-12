@@ -21,7 +21,7 @@ let route_collection =
   ; App.get "/projects" project_handler
   ; App.get "/cv" cv_handler
   ; App.get "/contact" contact_handler
-    (* App.post "/contact" Contact.post_contact_handler; *)
+  ; App.post "/contact" Contact.post_contact_handler
   ]
 ;;
 

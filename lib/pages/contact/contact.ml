@@ -43,7 +43,7 @@ module ContactPage : PageSig = struct
   (* Add post request handler *)
 end
 
-open Base
+(* open Base *)
 
 (* let pop_list lst =
   match lst with
@@ -52,10 +52,16 @@ open Base
 ;; *)
 
 let post_contact_handler req =
-  (* let open Opium in
-  let open Lwt in
-  Request.to_urlencoded req
-  >>= fun ls ->
+  let open Opium in
+  let open Lwt.Syntax in
+  let* form_data = Request.to_multipart_form_data req in
+  match form_data with
+  | None -> Lwt.return @@ Response.of_plain_text ""
+  | Some form_data -> 
+    List.iter (fun (k,v) -> Printf.printf "%s %s\n" k v) form_data;
+    Lwt.return @@ Response.of_plain_text "ok"
+
+  (* >>= fun ls ->
   Logs.debug (fun m ->
       List.iter ~f:(fun (key, value) -> m "%s : %s" key (String.concat ~sep:" " value)) ls);
   let name, t1 = pop_list ls in
@@ -64,5 +70,5 @@ let post_contact_handler req =
   return
   @@ Response.of_json
        (`Assoc
-         [ "name", `String name; "email", `String email; "message", `String message ])
-;; *)
+         [ "name", `String name; "email", `String email; "message", `String message ]) *)
+;;
