@@ -1,3 +1,4 @@
+(* This compilation unit is responsible for generating static HTML pages that are used by the route handlers *)
 open Shared
 open Tyxml.Html
 

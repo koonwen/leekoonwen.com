@@ -13,6 +13,9 @@ run :
 debug :
 	dune exec $(project_name) -- --debug --verbose --port=8000
 
+debug-build :
+	dune build -w --terminal-persistence=clear-on-rebuild
+
 build :
 	dune build @install
 

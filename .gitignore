@@ -30,3 +30,6 @@ _opam/
 
 # Local vscode settings
 .vscode
+
+# Secret keys
+secret.json

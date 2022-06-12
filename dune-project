@@ -21,7 +21,9 @@
    (>= 4.13.0))
   core
   opium
-  (utop :dev)
-  (merlin :dev)
-  (ocamlformat :dev)
-  (ocp-indent :dev)))
+  (utop :with-test)
+  (merlin :with-test)
+  (ocamlformat :with-test)
+  (ocamlformat-rpc :with-test)
+  (ocp-indent :with-test)
+  (ocaml-lsp-server :with-test)))
