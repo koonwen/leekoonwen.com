@@ -1,0 +1,7 @@
+(library
+ (name config)
+ (public_name website.config)
+ (libraries yojson logs)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test)))

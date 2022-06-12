@@ -43,32 +43,22 @@ module ContactPage : PageSig = struct
   (* Add post request handler *)
 end
 
-(* open Base *)
-
-(* let pop_list lst =
-  match lst with
-  | [] -> failwith "Empty List"
-  | (_, s_lst) :: tl -> String.concat ~sep:" " s_lst, tl
-;; *)
-
-let post_contact_handler req =
+let[@warning "-26"] post_contact_handler req =
+  let open Base in
   let open Opium in
   let open Lwt.Syntax in
-  let* form_data = Request.to_multipart_form_data req in
-  match form_data with
-  | None -> Lwt.return @@ Response.of_plain_text ""
-  | Some form_data -> 
-    List.iter (fun (k,v) -> Printf.printf "%s %s\n" k v) form_data;
-    Lwt.return @@ Response.of_plain_text "ok"
-
-  (* >>= fun ls ->
-  Logs.debug (fun m ->
-      List.iter ~f:(fun (key, value) -> m "%s : %s" key (String.concat ~sep:" " value)) ls);
-  let name, t1 = pop_list ls in
-  let email, t2 = pop_list t1 in
-  let message, _ = pop_list t2 in
-  return
-  @@ Response.of_json
-       (`Assoc
-         [ "name", `String name; "email", `String email; "message", `String message ]) *)
+  let+ raw_form_data = Request.to_urlencoded req in
+  let parsed_form_data =
+    List.map ~f:(fun (k, l) -> k, String.concat ~sep:" " l) raw_form_data
+  in
+  let map = Map.of_alist_exn (module String) parsed_form_data in
+  let name = Map.find_exn map "name" in
+  let email = Map.find_exn map "email" in
+  let message = Map.find_exn map "message" in
+  let s_l =
+    List.sexp_of_t (fun (k, v) -> Sexp.List [ Sexp.Atom k; Sexp.Atom v ]) parsed_form_data
+  in
+  Logs.debug (fun m -> m "%s\n" (Sexp.to_string s_l));
+  Lwt.async (fun () -> Email.try_send ~from:email ~message);
+  Response.of_plain_text "ok"
 ;;

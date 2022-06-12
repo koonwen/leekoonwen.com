@@ -1,7 +1,7 @@
 (library
  (name contact)
  (public_name website.pages.contact)
- (libraries website.shared letters)
+ (libraries website.shared website.config letters)
  (inline_tests)
  (preprocess
   (pps ppx_inline_test)))
