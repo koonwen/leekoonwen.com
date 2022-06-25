@@ -11,12 +11,12 @@ depends: [
   "ocaml" {>= "4.13.0"}
   "core"
   "opium"
-  "utop" {with-test}
-  "merlin" {with-test}
-  "ocamlformat" {with-test}
-  "ocamlformat-rpc" {with-test}
-  "ocp-indent" {with-test}
-  "ocaml-lsp-server" {with-test}
+  "utop" {dev}
+  "merlin" {dev}
+  "ocamlformat" {dev}
+  "ocamlformat-rpc" {dev}
+  "ocp-indent" {dev}
+  "ocaml-lsp-server" {dev}
   "odoc" {with-doc}
 ]
 build: [
