@@ -23,7 +23,9 @@ module ContactPage : PageSig = struct
                 ; textarea ~a:[ a_id "message"; a_name "message" ] (txt "")
                 ]
             ]
-        ; input ~a:[ a_input_type `Submit; a_value "Submit" ] ()
+        ; input
+            ~a:[ a_class [ "submit-button" ]; a_input_type `Submit; a_value "Submit" ]
+            ()
         ]
     ]
   ;;
