@@ -18,11 +18,13 @@ end
 module AboutPage = Generator (About.AboutPage)
 module ProjectPage = Generator (Projects.ProjectsPage)
 module CV = Generator (Cv.CvPage)
+module ContactSubmit = Generator (Contact.SubmitPage)
 module Contact = Generator (Contact.ContactPage)
 
 let generate_htmls () =
   AboutPage.generate_html ();
   ProjectPage.generate_html ();
   CV.generate_html ();
-  Contact.generate_html ()
+  Contact.generate_html ();
+  ContactSubmit.generate_html ()
 ;;

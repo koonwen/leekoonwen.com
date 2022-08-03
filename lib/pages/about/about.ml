@@ -11,27 +11,18 @@ module AboutPage : PageSig = struct
         ~a:[ a_class [ "column-right" ] ]
         [ p [ txt "Hi there, welcome to my Page!" ]
         ; p
-            [ txt "I am Koonwen from Singapore! I am currently a third year student at "
+            [ txt
+                "My name is Koonwen and I live in Singapore! I am a fourth year student \
+                 at "
             ; a ~a:[ a_href "https://www.yale-nus.edu.sg" ] [ txt "Yale-NUS" ]
-            ; txt
-                "college pursuing a major in\n\
-                \        computer science. I am passionate about programming and really \
-                 enjoy building software. I am also an OCaml enthusiast and love open \
-                 source. I'm on a quest to uncover the intricacies and complexities of \
-                 computer systems. At the moment, I am deeply interested in Operating \
-                 Systems because it is as low level as software gets (broadly speaking). \
-                 I believe that a strong understanding of it is imperative to be good \
-                 developer. I also I find the idea of software governing other software \
-                 quite mindblowing. I am also taken by compilers and language design and \
-                 hope to build tools that benefit other developers. In general, I like \
-                 diving into the guts of systems to extract the secrets that they hold"
+            ; txt "college pursuing a major in\n        computer science."
             ]
         ; p
             [ txt
-                "Besides spending all day debugging, I enjoy Skiing and a \n\
-                \                 competitive game of tennis. However, nothing comes \
-                 close to beating a good conversation with a friend (Well... except of \
-                 course successful compilation)."
+                "I am passionate about programming and really enjoy building software. \
+                 My favourite language is OCaml and try my best to contribute to open \
+                 source. My interests are in Operating Systems, compilers and language \
+                 design."
             ]
         ]
     ]

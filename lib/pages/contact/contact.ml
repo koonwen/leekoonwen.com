@@ -12,15 +12,20 @@ module ContactPage : PageSig = struct
         [ ul
             [ li
                 [ label [ txt "Name:" ]
-                ; input ~a:[ a_input_type `Text; a_id "name"; a_name "name" ] ()
+                ; input
+                    ~a:[ a_input_type `Text; a_id "name"; a_name "name"; a_required () ]
+                    ()
                 ]
             ; li
                 [ label [ txt "Email:" ]
-                ; input ~a:[ a_input_type `Email; a_id "email"; a_name "email" ] ()
+                ; input
+                    ~a:
+                      [ a_input_type `Email; a_id "email"; a_name "email"; a_required () ]
+                    ()
                 ]
             ; li
                 [ label [ txt "Message:" ]
-                ; textarea ~a:[ a_id "message"; a_name "message" ] (txt "")
+                ; textarea ~a:[ a_id "message"; a_name "message"; a_required () ] (txt "")
                 ]
             ]
         ; input
@@ -29,16 +34,6 @@ module ContactPage : PageSig = struct
         ]
     ]
   ;;
-
-  (* let form =
-    [ p
-        [ txt "Any questions? Get in touch!"
-        ; br ()
-        ; txt "Email me at: "
-        ; b [ txt "koonwen@gmail.com" ]
-        ]
-    ]
-  ;; *)
 
   let content = form
 
@@ -60,7 +55,14 @@ let[@warning "-26"] post_contact_handler req =
   let s_l =
     List.sexp_of_t (fun (k, v) -> Sexp.List [ Sexp.Atom k; Sexp.Atom v ]) parsed_form_data
   in
-  Logs.debug (fun m -> m "%s\n" (Sexp.to_string s_l));
+  (* Logs.debug (fun m -> m "%s\n" (Sexp.to_string s_l)); *)
   Lwt.async (fun () -> Email.try_send ~from:email ~message);
-  Response.of_plain_text "ok"
+  Response.redirect_to "/contact/sent"
 ;;
+
+module SubmitPage : PageSig = struct
+  include ContactPage
+
+  let filename = "submitted.html"
+  let content = [ h2 [ txt "Sent! Thanks for your email!" ] ]
+end

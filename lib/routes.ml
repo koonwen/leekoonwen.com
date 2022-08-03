@@ -14,6 +14,7 @@ let about_handler = get_static_page "./static/about.html"
 let project_handler = get_static_page "./static/projects.html"
 let cv_handler = get_static_page "./static/cv.html"
 let contact_handler = get_static_page "./static/contact.html"
+let contact_callback_handler = get_static_page "./static/contact_callback.html"
 
 let route_collection =
   [ App.get "/" about_handler
@@ -22,6 +23,7 @@ let route_collection =
   ; App.get "/cv" cv_handler
   ; App.get "/contact" contact_handler
   ; App.post "/contact" Contact.post_contact_handler
+  ; App.get "/contact/sent" contact_callback_handler
   ]
 ;;
 
