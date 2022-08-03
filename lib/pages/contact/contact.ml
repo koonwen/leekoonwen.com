@@ -52,12 +52,12 @@ let[@warning "-26"] post_contact_handler req =
   let name = Map.find_exn map "name" in
   let email = Map.find_exn map "email" in
   let message = Map.find_exn map "message" in
-  let s_l =
+  (* let s_l =
     List.sexp_of_t (fun (k, v) -> Sexp.List [ Sexp.Atom k; Sexp.Atom v ]) parsed_form_data
   in
-  (* Logs.debug (fun m -> m "%s\n" (Sexp.to_string s_l)); *)
+    Logs.debug (fun m -> m "%s\n" (Sexp.to_string s_l)); *)
   Lwt.async (fun () -> Email.try_send ~from:email ~message);
-  Response.redirect_to "/contact/sent"
+  Response.redirect_to "/submitted.html"
 ;;
 
 module SubmitPage : PageSig = struct
