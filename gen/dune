@@ -1,0 +1,4 @@
+(library
+ (name gen)
+ (libraries htmlit dream-html)
+ (synopsis "html generator for static site page"))

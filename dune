@@ -1,15 +1,15 @@
-(subdir
- assets/
- (rule
-  (target styles.css)
-  (deps
-   (:config %{workspace_root}/tailwind.config.js)
-   (:input %{workspace_root}/src/frontend/css/styles.css)
-   (source_tree %{workspace_root}/src/frontend)
-   (source_tree %{workspace_root}/assets))
-  (action
-   (chdir
-    %{workspace_root}
-    (run npx tailwindcss -c %{config} -i %{input} -o %{target})))))
+; (subdir
+;  static/
+;  (rule
+;   (target styles.css)
+;   (deps
+;    (:config %{workspace_root}/tailwind.config.js)
+;    (:input %{workspace_root}/src/frontend/css/styles.css)
+;    (source_tree %{workspace_root}/src/frontend)
+;    (source_tree %{workspace_root}/assets))
+;   (action
+;    (chdir
+;     %{workspace_root}
+;     (run npx tailwindcss -c %{config} -i %{input} -o %{target})))))
 
-(data_only_dirs assets)
+; (data_only_dirs static)
