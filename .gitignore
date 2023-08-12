@@ -33,3 +33,6 @@ _opam/
 
 # Secret keys
 secret.json
+
+# static files
+static/
