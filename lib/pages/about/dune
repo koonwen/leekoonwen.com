@@ -1,4 +1,0 @@
-(library
- (name about)
- (public_name website.pages.about)
- (libraries website.shared))

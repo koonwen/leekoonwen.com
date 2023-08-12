@@ -34,5 +34,8 @@ _opam/
 # Secret keys
 secret.json
 
-# static files
+# static
 static/
+
+# tailwindcss
+node_modules/

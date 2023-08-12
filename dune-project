@@ -1,2 +1,2 @@
-(lang dune 2.9)
-(name website)
+(lang dune 3.3)
+(name leekoonwen_site)

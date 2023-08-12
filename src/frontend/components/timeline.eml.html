@@ -1,0 +1,15 @@
+let list_item (date, title, descr, extra) =
+    <li class="mb-10 ml-4">
+        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%s! date %></time>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white"><%s! title %></h3>
+        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><%s! descr %></p>
+    <%s! Experience.render title extra %>
+    </li>
+
+let render () =
+<ol class="relative border-l border-gray-200 dark:border-gray-700">
+  <%s! list_item ("May 2023", "Ahrefs", "Intern for the Backend team working on OCaml 5 migration and responsible for setting up custom slack integration with the hiring platform", "To be added") %>
+  <%s! list_item ("May 2022", "Bytedance", "Intern in the Technical Infrastructure department for the Developer Products team. Tasked to maintain and improve upon an internal FaaS monitoring service", "More to come") %>
+  <%s! list_item ("January 2022", "Tarides", "Research Intern for the MirageOS team. Worked on Porting MirageOS onto embedded devices", "Tarides info") %>
+</ol>

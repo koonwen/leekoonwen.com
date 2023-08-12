@@ -1,0 +1,49 @@
+(library
+ (name frontend)
+ (libraries dream))
+
+(include_subdirs unqualified)
+
+(rule
+ (targets templates.ml)
+ (deps templates.eml.html)
+ (action
+  (run dream_eml %{deps} --workspace %{workspace_root})))
+
+(subdir
+ components/
+ (rule
+  (targets placeholder.ml)
+  (deps placeholder.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets footer.ml)
+  (deps footer.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets header.ml)
+  (deps header.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets timeline.ml)
+  (deps timeline.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets experience.ml)
+  (deps experience.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets project.ml)
+  (deps project.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root})))
+ (rule
+  (targets profile.ml)
+  (deps profile.eml.html)
+  (action
+   (run %{bin:dream_eml} %{deps} --workspace %{workspace_root}))))

@@ -1,0 +1,39 @@
+let page ~content =
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/output.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <%s! Header.render () %>
+    </header>
+    <%s! content %>
+    <footer>
+      <%s! Footer.render () %>
+    </footer>
+  </body>
+  </html>
+
+let index_content =
+  <main class="relative flex flex-col space-y-12 mt-8">
+  <div class="container max-w-2xl mx-auto">
+    <div class="flex flex-wrap justify-center h-auto space-x-6">
+      <%s! Profile.render () %>
+      <%s! Profile.about () %>
+    </div>
+  </div>
+  <div class="container max-w-2xl mx-auto">
+    <div class="container max-w-lg mx-auto mt-10">
+      <%s! Timeline.render () %>
+    </div>
+  </div>  
+  <div class="container mx-auto">  
+    <%s! Project.render () %>
+  </div>
+  </main>
+
+let index = page ~content:index_content

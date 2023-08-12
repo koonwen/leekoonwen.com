@@ -1,21 +1,17 @@
-(library
- (name lib)
- (public_name website.lib)
- (libraries
-  opium
-  core
-  letters
-  website.pages.about
-  website.pages.contact
-  website.pages.cv
-  website.pages.projects
-  website.shared))
+(executable
+ (name main)
+ (modules main)
+ (libraries dream)
+ (preprocess
+  (pps lwt_ppx)))
 
-; (wrapped false))
+(executable
+ (name gen)
+ (modules header projects timeline gen)
+ (libraries tyxml))
 
-; (include_subdirs unqualified)
-
-; (env
-;  (dev
-;   (flags
-;    (:standard -w -16))))
+(rule
+ (targets index.html)
+ (deps gen.exe)
+ (action
+  (run %{exe:gen.exe})))

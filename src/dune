@@ -1,0 +1,12 @@
+(rule
+ (alias run)
+ (deps main.exe %{workspace_root}/assets/output.css)
+ (action
+  (chdir
+   %{workspace_root}
+   (run %{bin:main}))))
+
+(executable
+ (name main)
+ (public_name main)
+ (libraries dream frontend))

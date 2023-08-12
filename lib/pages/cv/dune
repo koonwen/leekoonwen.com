@@ -1,4 +1,0 @@
-(library
- (name cv)
- (public_name website.pages.cv)
- (libraries website.shared))
